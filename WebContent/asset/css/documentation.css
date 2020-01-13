@@ -1,0 +1,48 @@
+body {
+    position: relative;
+}
+.container {
+    width: 1170px;
+    max-width: none !important;
+}
+.wrapper-doc-nav {
+    position: fixed;
+    height: 100%;
+    width: 200px;
+    background-color: #191818;
+    top: 0;
+    left: 0;
+}
+.wrapper-doc-nav h3 {
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 16px;
+    background-color: #333333;
+}
+.nav > li > a {
+    color: #999;
+}
+.nav > li > a:hover, .nav > li > a:focus {
+    background-color: #333333;
+}
+.mailto {
+    color: #D14F30 !important;
+}
+.section {
+    min-height: 650px;
+}
+.section-doc-lightbox {
+    min-height: 350px;
+}
+.prettyprint {
+    border-top: solid 1px #DDDDDD;
+    background-color: #F5F5F5;
+}
+.list-doc a {
+    font-size: 13px;
+    color: #D14F30 !important;
+}
+.section-doc-footer {
+    min-height:0;
+}
