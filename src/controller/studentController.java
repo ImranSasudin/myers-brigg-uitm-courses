@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.gradeDAO;
+import dao.spmResultDAO;
 import dao.studentDAO;
 import model.studentBean;
 import dao.subjectDAO;
@@ -123,27 +124,53 @@ public class studentController extends HttpServlet {
 				
 				//user.setstudentIc(ic);
 				
-				//user = studentDAO.getUser(user);
+				user = studentDAO.getUser(user);
 				if (action.equalsIgnoreCase("student")) {
 
 					if(!user.isValid()){
 			        	try {
 			        	
 							dao.addUser(user);
+							dao.addStudent(user);
 						} catch (NoSuchAlgorithmException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 			        	
 			        	forward = SPMPAGE;   
-						String studentIc = request.getParameter("studentIc");
-						studentBean student = dao.getUserByIC(studentIc);
+						
+						studentBean student = dao.getUserByIC(request.getParameter("studentIc"));
 						request.setAttribute("user", student);
 						request.setAttribute("subjects", dao1.getAllSubjectName());
 						
 						RequestDispatcher view = request.getRequestDispatcher(forward);
 					    view.forward(request, response);
 			        }
+					else {
+						user = studentDAO.getSPM(user);
+						if(!user.isValid()){
+						
+							forward = SPMPAGE;   
+							String studentIc = request.getParameter("studentIc");
+							studentBean student = dao.getUserByIC(studentIc);
+							request.setAttribute("user", student);
+							request.setAttribute("subjects", dao1.getAllSubjectName());
+							
+							RequestDispatcher view = request.getRequestDispatcher(forward);
+						    view.forward(request, response);
+						}
+						else {
+							forward = DETAILS;
+								
+							String studentIc = request.getParameter("studentIc");
+							studentBean student = dao.getUserByIC(studentIc);
+							request.setAttribute("user", student);
+							request.setAttribute("grades", spmResultDAO.getAllGrade(studentIc));
+							RequestDispatcher view = request.getRequestDispatcher(forward);
+							view.forward(request, response);
+							
+						}
+					}
 					
 				} 
 				else if (action.equalsIgnoreCase("addSubject")) {
@@ -171,7 +198,7 @@ public class studentController extends HttpServlet {
 						subject.setsubjectId(subjectId[i]);
 						subject.setGrade(grade[i]);
 						try {
-							gradeDAO.addGrade(subject, student);
+							spmResultDAO.addGrade(subject, student);
 							
 						} catch (NoSuchAlgorithmException e) {
 							// TODO Auto-generated catch block
@@ -188,7 +215,7 @@ public class studentController extends HttpServlet {
 	
 						student = dao.getUserByIC(studentIc);
 						request.setAttribute("user", student);
-						request.setAttribute("grades", gradeDAO.getAllGrade(studentIc));
+						request.setAttribute("grades", spmResultDAO.getAllGrade(studentIc));
 						RequestDispatcher view = request.getRequestDispatcher(forward);
 						view.forward(request, response);
 					

@@ -35,8 +35,8 @@
 							 '<c:forEach items="${subjects}" var="subjects">' +
 					'<option value="${subjects.subjectId}"><c:out value="${subjects.subjectName}" /></option>' +
 				'</c:forEach></select> '+
-				'<select name="grade"><option value="A+">A+</option><option value="A">A</option><option value="A-">A-</option>'+
-				'<option value="B+">B+</option><option value="B">B</option><option value="B-">B-</option><option value="C+">C+</option><option value="C-">C-</option><option value="D">D</option><option value="E">E</option><option value="G">G</option></select>'+
+				'<select name="grade"><option value="1">A+</option><option value="2">A</option><option value="3">A-</option>'+
+				'<option value="4">B+</option><option value="5">B</option><option value="6">C+</option><option value="7">C</option><option value="8">D</option><option value="9">E</option><option value="10">G</option></select>'+
 				'<input type="button" value="Delete" id="delete"></div>');
 				});
 			$('body').on('click','#delete',function(e) { 
@@ -120,16 +120,16 @@
 			</select>
 			
 				<select name="grade">
-				<option value="A+">A+</option>
-				<option value="A">A</option>
-				<option value="A-">A-</option>
-				<option value="B+">B+</option>
-				<option value="B">B</option>
-				<option value="C+">C+</option>
-				<option value="C">C-</option>
-				<option value="D">D</option>
-				<option value="E">E</option>
-				<option value="G">G</option>
+				<option value="1">A+</option>
+				<option value="2">A</option>
+				<option value="3">A-</option>
+				<option value="4">B+</option>
+				<option value="5">B</option>
+				<option value="6">C+</option>
+				<option value="7">C</option>
+				<option value="8">D</option>
+				<option value="9">E</option>
+				<option value="10">G</option>
 			</select>
 			
 			</div>

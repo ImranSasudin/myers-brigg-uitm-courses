@@ -149,7 +149,7 @@ public class subjectDAO {
         try {
         	currentCon = connectionManager.getConnection();
         	stmt = currentCon.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from subjectspm order by 2");
+            ResultSet rs = stmt.executeQuery("select * from spmsubject order by 2");
             
             while (rs.next()) {
             	subjectBean subject = new subjectBean();

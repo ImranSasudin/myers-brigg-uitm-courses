@@ -136,7 +136,7 @@
 							
                   </div>
                 </div> 
-                <table id="subjects" border="1">
+                <table id="subjects" border="1" align="center">
 			            <tr>
 			                <th>Subject Name</th>   
 			                <th>Grade</th>            
@@ -147,7 +147,10 @@
 			                    <td><c:out value="${grade.grade}" /></td>
 			                </tr> 
 			    </c:forEach>
-			    </table>
+			    </table><br><br>
+			    <center>
+			    <a href="/fyp/test/testQuestion.jsp" class="btn btn-primary">Take Test</a>
+			    </center>
                 </div> 
                 </section>
                 <br><br>
