@@ -300,7 +300,7 @@ public class studentDAO {
     	studentName = bean.getstudentName();
     //	password = bean.getPassword(); 
     	
-        String searchQuery = "UPDATE user SET useric='" + studentIc + "', username='" + studentName + "', userphone='" + studentPhone + "', useremail='" + studentEmail + "' WHERE useric= '" + studentIc + "'";
+        String searchQuery = "UPDATE users SET useric='" + studentIc + "', username='" + studentName + "', userphone='" + studentPhone + "', useremail='" + studentEmail + "' WHERE useric= '" + studentIc + "'";
     	
     	try {
 

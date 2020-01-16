@@ -3,6 +3,9 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,7 +32,8 @@ public class studentController extends HttpServlet {
 	private static String INDEX = "/student/index.jsp";
     private static String VIEW = "/student/viewApp.jsp";
 	private static String TESTPAGE = "/student/testPage.jsp";
-	private static String SPMPAGE = "/Spm/spm1.jsp";   
+	private static String SPMPAGE = "/Spm/spm1.jsp";  
+	private static String SPMUPDATE = "/Spm/updateSPM.jsp";   
 	private static String ADDSUBJECT = "/admin/addSubject.jsp";
 	private static String INDEXADMIN = "/admin/indexAdmin.jsp";
 	private static String DETAILS = "/student/studentSubjectDetails.jsp";
@@ -86,9 +90,10 @@ public class studentController extends HttpServlet {
 			//request.setAttribute("user", user);
 			//request.setAttribute("admins", dao2.getAllAdminName());
 	}
-		else if (action.equalsIgnoreCase("spmPage")) {
-			forward = SPMPAGE;   
-			String studentIc = request.getParameter("studentIc");
+		else if (action.equalsIgnoreCase("updateSPM")) {
+			forward = SPMUPDATE;   
+			HttpSession session = request.getSession(true);
+			String studentIc = (String) session.getAttribute("currentSessionUser");
 			studentBean student = dao.getUserByIC(studentIc);
 			request.setAttribute("user", student);
 			request.setAttribute("subjects", dao1.getAllSubjectName());
@@ -200,9 +205,38 @@ public class studentController extends HttpServlet {
 					String subjectId[] = request.getParameterValues("subjectId");
 					String grade[] = request.getParameterValues("grade");
 					String studentIc = request.getParameter("studentIc");
-					
+					String duplicate = "false";
 					studentBean student = new studentBean();
 					student.setstudentIc(studentIc);
+					
+					//this is to check if librarian enter same book in the borrowForm.jsp
+					Map<String, Integer> duplicates = new HashMap<String, Integer>();
+					 
+				    for (String str : subjectId) {
+				        if (duplicates.containsKey(str)) {
+				           duplicates.put(str, duplicates.get(str) + 1);
+				        } else {
+				           duplicates.put(str, 1);
+				        }
+				    }
+				 
+				    for (Map.Entry<String, Integer> entry : duplicates.entrySet()) {
+				        if(entry.getValue() > 1)
+				        	duplicate = "true"; //if librarian enter same book in borrowForm, duplicate="true"
+				    }
+				    
+				    if(duplicate.equalsIgnoreCase("true")) {
+				    	forward = SPMPAGE;   
+						studentIc = request.getParameter("studentIc");
+						student = dao.getUserByIC(studentIc);
+						HttpSession session = request.getSession(true);
+        				session.setAttribute("currentSessionUser", user.getstudentIc());
+						request.setAttribute("user", student);
+						request.setAttribute("subjects", dao1.getAllSubjectName());
+						request.setAttribute("duplicate", "true");
+				    }
+				    else {
+				    
 					for(int i = 0; i<subjectId.length; i++) {
 						subject.setsubjectId(subjectId[i]);
 						subject.setGrade(grade[i]);
@@ -217,7 +251,7 @@ public class studentController extends HttpServlet {
 					response.setContentType("text/html");
 				      PrintWriter pw = response.getWriter();
 				      pw.println("<script>");
-				      pw.println("alert('The order has been updated');");
+				      pw.println("alert('SPM Result Submitted');");
 				      pw.println("</script>");
 				      
 				      forward = DETAILS;
@@ -225,6 +259,7 @@ public class studentController extends HttpServlet {
 						student = dao.getUserByIC(studentIc);
 						request.setAttribute("user", student);
 						request.setAttribute("grades", spmResultDAO.getAllGrade(studentIc));
+				    }
 						RequestDispatcher view = request.getRequestDispatcher(forward);
 						view.forward(request, response);
 					
@@ -234,9 +269,35 @@ public class studentController extends HttpServlet {
 					String subjectId[] = request.getParameterValues("subjectId");
 					String grade[] = request.getParameterValues("grade");
 					String studentIc = request.getParameter("studentIc");
-					
+					String duplicate = "false";
 					studentBean student = new studentBean();
 					student.setstudentIc(studentIc);
+					
+					Map<String, Integer> duplicates = new HashMap<String, Integer>();
+					 
+				    for (String str : subjectId) {
+				        if (duplicates.containsKey(str)) {
+				           duplicates.put(str, duplicates.get(str) + 1);
+				        } else {
+				           duplicates.put(str, 1);
+				        }
+				    }
+				 
+				    for (Map.Entry<String, Integer> entry : duplicates.entrySet()) {
+				        if(entry.getValue() > 1)
+				        	duplicate = "true"; //if librarian enter same book in borrowForm, duplicate="true"
+				    }
+				    
+				    if(duplicate.equalsIgnoreCase("true")) {
+				    	forward = SPMUPDATE;   
+						HttpSession session = request.getSession(true);
+						studentIc = (String) session.getAttribute("currentSessionUser");
+						student = dao.getUserByIC(studentIc);
+						request.setAttribute("user", student);
+						request.setAttribute("subjects", dao1.getAllSubjectName());
+						request.setAttribute("duplicate", "true");
+				    }
+				    else { //no duplicate
 					
 					studentDAO.deleteSPM(studentIc);
 					for(int i = 0; i<subjectId.length; i++) {
@@ -250,21 +311,18 @@ public class studentController extends HttpServlet {
 							e.printStackTrace();
 						}
 					}
-					response.setContentType("text/html");
-				      PrintWriter pw = response.getWriter();
-				      pw.println("<script>");
-				      pw.println("alert('The order has been updated');");
-				      pw.println("</script>");
+					
 				      
 				      forward = DETAILS;
 	
 						student = dao.getUserByIC(studentIc);
 						request.setAttribute("user", student);
 						request.setAttribute("grades", spmResultDAO.getAllGrade(studentIc));
+				    }
 						RequestDispatcher view = request.getRequestDispatcher(forward);
 						view.forward(request, response);
 					
-					
+				    
 				}
 				
 	}

@@ -3,13 +3,7 @@
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
-    <%
-  response.setHeader("Cache-Control","no-cache");
-  response.setHeader("Cache-Control","no-store");
-  response.setHeader("Pragma","no-cache");
-  response.setDateHeader ("Expires", 0);
 
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -107,7 +101,7 @@
 <br>
 <br>
 
-<h2 align="center">SPM Result</h2>
+<h2 align="center">Update SPM Result</h2>
  <br><br>
  			
 			<div id="spm">
@@ -134,10 +128,17 @@
 			
 			</div>
 			</div>
+			
 			<button type="button" id="add" role="button">Add Subject</button>
 			<br><br>
         	 <button  type="submit" class="button button-block" name="action" value="update">Submit</button>
           </form>
 </body>
+<input type="hidden"  id="duplicate" value="${duplicate}">
+<script>
+if($('#duplicate').val() == 'true'){
+	alert('Duplicate Subjects');
+	}
+</script>
 
 </html> 
