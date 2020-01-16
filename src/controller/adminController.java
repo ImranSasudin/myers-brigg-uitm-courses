@@ -9,10 +9,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
 
 import dao.subjectDAO;
 import dao.adminDAO;
+import dao.studentDAO;
 import model.adminBean;
 import model.subjectBean;
 
@@ -30,7 +32,10 @@ public class adminController extends HttpServlet {
     private static String VIEWADMIN = "/admin/viewAdmin.jsp";
     private static String UPDATEADMIN = "/admin/updateAdmin.jsp";
     private static String LIST_SUBJECT = "/admin/listSubject.jsp";
+    private static String LIST_STUDENT = "/admin/listStudent.jsp";
+    private static String LIST_COURSE = "/admin/listCourse.jsp";
     private static String INSERT = "/admin/addSubject.jsp";
+    private static String LOGOUT = "/adminLogIn.jsp";
     private subjectDAO dao;
     private adminDAO dao2;
     String forward="";  
@@ -54,12 +59,23 @@ public class adminController extends HttpServlet {
 		String action = request.getParameter("action");
 
 		
-		 if (action.equalsIgnoreCase("listSubject")){
-			forward = LIST_SUBJECT;
-			request.setAttribute("subjects", dao.getAllSubject());         
+		 if (action.equalsIgnoreCase("listStudent")){
+			forward = LIST_STUDENT;
+			request.setAttribute("students", studentDAO.getAllUser());         
 		 }
 		 else if(action.equalsIgnoreCase("addSubject")){
 	            forward = INSERT;
+	        }
+		 else if(action.equalsIgnoreCase("listCourse")){
+	            forward = LIST_COURSE;
+	            request.setAttribute("courses", adminDAO.getAllCourse()); 
+	        }
+		 else if(action.equalsIgnoreCase("logout")){
+	            forward = LOGOUT;
+	            HttpSession session = request.getSession(true);
+	            session.setAttribute("currentSessionUser", null);
+
+				session.invalidate();
 	        }
 		 else if (action.equalsIgnoreCase("deleteSubject")){
 				//forward = UPDATEADMIN;   

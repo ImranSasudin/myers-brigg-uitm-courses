@@ -88,6 +88,13 @@
                         <!-- End Toggle Nav Link For Mobiles -->
                         <a class="navbar-brand" href="/fyp/index.jsp">Course Recommendation based on Myers-Briggs </a>
                     </div>
+                    <div class="navbar-collapse collapse">
+                      <ul class="nav navbar-nav navbar-right">
+                              <li>
+                              	<a href="/fyp/studentController?action=logout">Log Out</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <!-- End Header Logo & Navigation -->

@@ -315,19 +315,20 @@ public class studentDAO {
     }
 
 //    //get all user
-    public List<studentBean> getAllUser() {
+    public static List<studentBean> getAllUser() {
         List<studentBean> users = new ArrayList<studentBean>();
         try {
         	currentCon = connectionManager.getConnection();
         	stmt = currentCon.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from student");
+            ResultSet rs = stmt.executeQuery("select * from users u join student s on (u.useric = s.userid) join personality p on(p.personalityid = s.personalityid)");
             
             while (rs.next()) {
                 studentBean user = new studentBean();
-                user.setstudentIc(rs.getString("studentIc"));
-                user.setstudentName(rs.getString("studentName"));
-                user.setstudentPhone(rs.getString("studentPhone"));
-                user.setstudentEmail(rs.getString("studentEmail"));
+                user.setstudentIc(rs.getString("useric"));
+                user.setstudentName(rs.getString("username"));
+                user.setstudentPhone(rs.getString("userphone"));
+                user.setstudentEmail(rs.getString("useremail"));
+                user.setpersonalityID(rs.getString("personalitytype"));
                 users.add(user);
             }
         } catch (SQLException e) {

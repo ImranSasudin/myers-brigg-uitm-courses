@@ -7,6 +7,7 @@ import java.util.List;
 //import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import model.adminBean;
+import model.courseBean;
 import connection.connectionManager;
 
 public class adminDAO {
@@ -20,12 +21,12 @@ public class adminDAO {
     //login admin
     public static adminBean adminLogIn(adminBean bean) throws NoSuchAlgorithmException {
     	
-        adminEmail = bean.getadminEmail();
+        adminIc = bean.getadminIc();
         adminPassword = bean.getadminPassword();
 
-        String searchQuery = "select * from admin where adminEmail='" + adminEmail + "' AND adminPassword='" + adminPassword + "'";
+        String searchQuery = "select * from admin where userid='" + adminIc + "' AND adminPassword='" + adminPassword + "'";
 
-        System.out.println("Your email is " + adminEmail);
+        System.out.println("Your Ic is " + adminIc);
         System.out.println("Your password is " + adminPassword);
         System.out.println("Query: " + searchQuery);
 
@@ -37,10 +38,10 @@ public class adminDAO {
 
             // if user exists set the isValid variable to true
             if (more) {
-            	String email = rs.getString("adminEmail");
+            	String ic = rs.getString("userid");
            
-           		System.out.println("Welcome " + email);
-                bean.setadminEmail(email);
+           		System.out.println("Welcome " + ic);
+                bean.setadminEmail(ic);
                 bean.setValid(true);
            	}
            
@@ -173,27 +174,26 @@ public class adminDAO {
     
     
    //get list of all admin
-    public List<adminBean> getAllAdmin() {
-        List<adminBean> admins = new ArrayList<adminBean>();
+    public static List<courseBean> getAllCourse() {
+        List<courseBean> courses = new ArrayList<courseBean>();
         try {
         	currentCon = connectionManager.getConnection();
         	stmt = currentCon.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from admin order by adminIc");
+            ResultSet rs = stmt.executeQuery("select * from diplomacourse d join faculty f on (d.diplomafaculty = f.facultyid)");
             
             while (rs.next()) {
-            	adminBean user = new adminBean();
-            	user.setadminIc(rs.getString("adminIc"));
-                user.setadminName(rs.getString("adminName"));
-                user.setadminEmail(rs.getString("adminEmail"));
-                user.setadminPhone(rs.getString("adminPhone"));
+            	courseBean course = new courseBean();
+            	course.setCourseId(rs.getString("diplomacourseid"));
+            	course.setCourseName(rs.getString("diplomacoursename"));
+            	course.setCourseFaculty(rs.getString("facultyname"));
 
-               admins.add(user);
+                courses.add(course);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return admins;
+        return courses;
     }
     
     //get list of all admin name 

@@ -66,6 +66,13 @@ public class studentController extends HttpServlet {
 					studentBean user = dao.getUserByIC(studentIc);
 	            	request.setAttribute("user", user);
 	        }
+		else if(action.equalsIgnoreCase("logout")){
+            forward = REGISTER;
+            HttpSession session = request.getSession(true);
+            session.setAttribute("currentSessionUser", null);
+
+			session.invalidate();
+        }
 		
 		else if (action.equalsIgnoreCase("viewApp")){
 					forward = VIEW;   

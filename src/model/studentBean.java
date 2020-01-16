@@ -7,7 +7,7 @@ public class studentBean {
 	//private String student_add;
 	private String studentEmail;
 	private String studentPhone;
-	
+	private String personalityID;
 	public boolean valid;
 	//private String password;
 	/*public String getPassword() {
@@ -25,9 +25,15 @@ public class studentBean {
 		this.student_id = student_id;
 	}*/
 	
-
+	
 	public String getstudentIc() {
 		return studentIc;
+	}
+	public String getpersonalityID() {
+		return personalityID;
+	}
+	public void setpersonalityID(String personalityID) {
+		this.personalityID = personalityID;
 	}
 	public void setstudentIc(String studentIc) {
 		this.studentIc = studentIc;

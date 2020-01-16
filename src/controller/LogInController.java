@@ -52,14 +52,14 @@ public class LogInController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
 		action = request.getParameter("action");
 		
         	try {
         		adminBean user = new adminBean();
-        		user.setadminEmail(request.getParameter("email"));
+        		user.setadminIc(request.getParameter("adminIc"));
     			user.setadminPassword(request.getParameter("password"));
     			/*
         		studentBean userA = new studentBean();
@@ -72,16 +72,16 @@ public class LogInController extends HttpServlet {
 
     			if(user.isValid())
     			{
-    				String searchQuery = "select * from admin where adminEmail='" + user.getadminEmail() + "' AND adminPassword='" + user.getadminPassword() + "'";
+    				String searchQuery = "select * from users where useric='" + user.getadminIc() + "'";
     				currentCon = connectionManager.getConnection();
     				stmt = currentCon.createStatement();
     				rs= stmt.executeQuery(searchQuery);
     				boolean more = rs.next();
     				
     				if(more) {
-    					String email = rs.getString("adminEmail");
+    					String adminIc = rs.getString("useric");
     					HttpSession session = request.getSession(true);
-        				session.setAttribute("currentSessionUser", email);
+        				session.setAttribute("currentSessionUser", adminIc);
         				RequestDispatcher view = request.getRequestDispatcher("/admin/indexAdmin.jsp");
         	            view.forward(request, response);
     				

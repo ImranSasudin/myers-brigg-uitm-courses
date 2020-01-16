@@ -13,11 +13,11 @@
       <div class="#">  
           <h1>Course Recommendation Based On Myers-Briggs Theory</h1>
           
-          <form method="get" action="LogInController" id="loginRAdmin">
+          <form action="/fyp/LogInController" method="post"  id="loginRAdmin">
           
           <div class="field-wrap">
-            <p>Email<span class="req">*</span></p>
-			<input type="email" name="email" required autocomplete="off"/>
+            <p>IC<span class="req">*</span></p>
+			<input type="text" name="adminIc" required autocomplete="off"/>
           </div>
           
           <div class="field-wrap">
@@ -26,7 +26,7 @@
           </div>
           
           <br>
-          <button type="submit" class="button button-block">SIGN IN</button>
+          <button type="submit" name="action" value="login" class="button button-block">SIGN IN</button>
           </form>
 
       </div><!-- tab-content -->

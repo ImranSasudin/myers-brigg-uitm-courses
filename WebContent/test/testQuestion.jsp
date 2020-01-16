@@ -95,7 +95,11 @@
                     </div>
                     
                     <div class="navbar-collapse collapse">
-                      
+                      <ul class="nav navbar-nav navbar-right">
+                              <li>
+                              	<a href="/fyp/studentController?action=logout">Log Out</a>
+                            </li>
+                        </ul>
                     </div>
                     
                 </div>
