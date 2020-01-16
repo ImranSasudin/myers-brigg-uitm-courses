@@ -103,7 +103,7 @@ public class adminController extends HttpServlet {
 			if(!user.isValid()){
 	        	try {
 					dao.addSubject(user);
-    				JOptionPane.showMessageDialog(null, "Succefully added" + "!");
+    				//JOptionPane.showMessageDialog(null, "Succefully added" + "!");
 
 				} catch (NoSuchAlgorithmException e) {
 					// TODO Auto-generated catch block

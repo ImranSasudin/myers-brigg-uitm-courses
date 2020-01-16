@@ -105,56 +105,51 @@
  </header>
   <section class="fun-facts">
   <div class="form">
-         <h3>DETAILS </h3>
+         <h3>RESULT</h3><br>
             <div class="row"> 
                 <div class="col-xs-12 col-sm-12 col-md-12" data-wow-duration="2s" data-wow-delay="300ms">
+                <center>
+                <h1>${personalityType}</h1><br>
+                <h3>${personalityDesc}</h3><br><br>
+                </center>
                     
-                          		<table border="0" width="50%" align="center">
+                          		<table border="1" width="50%" align="center">
                           		
                           			<tr>
-                          				<th><label>Ic Number: </label><br></th>
-                          				<th><input class="form-control" type="text" name="studentIc" id="studentIc" value="<c:out value="${user.studentIc}" />" readonly> <br></th>
+                          				<th>Faculty</th>
+                          				<th>Course</th>
                           			</tr>
-                          			<tr>
-                          				<th><label>Name:</label><br></th>
-                          				<th><input class="form-control"type="text" name="studentName" id="studentName" value="<c:out value="${user.studentName}" />" readonly> <br></th>
-                          			</tr>
-                          			<tr>
-                          				<th><label>Email:</label><br></th>
-                          				<th><input class="form-control" type="email" name="studentEmail" id="studentEmail" value="<c:out value="${user.studentEmail}" />" readonly> <br></th>
-                          			</tr>
-                          			<tr>
-                          				<th><label>Phone Number:</label><br></th>
-                          				<th><input class="form-control" type="text" name="studentPhone" id="studentPhone" value="<c:out value="${user.studentPhone}" />" readonly> <br></th>
-                          			</tr>
-                          			<tr>
-		                     		<th colspan ="2">
-		           
-									</th>
-		                     		</tr>
-                          		</table>								
+                          			<c:choose>
+                          				<c:when test="${faculty1 != null}">
+                          					<tr>
+		                          				<td>${faculty1}</td>
+		                          				<td>${course1}</td>
+		                          			</tr>
+                          				</c:when>
+                          				<c:when test="${faculty2 != null}">
+                          					<tr>
+		                          				<td>${faculty2}</td>
+		                          				<td>${course2}</td>
+		                          			</tr>
+                          				</c:when>
+                          				<c:when test="${faculty3 != null}">
+                          					<tr>
+		                          				<td>${faculty3}</td>
+		                          				<td>${course3}</td>
+		                          			</tr>
+                          				</c:when>
+                          			</c:choose>
+                          			
+                          			
+
+
+                          		</table>		
+                          		<%String studentIc = (String) session.getAttribute("currentSessionUser"); %>
+                          		<br><br><center><a href="/fyp/studentController?action=home&studentIc=<%=studentIc%>" value="test" class="btn btn-primary align-center">Home</a></center>			
 							
                   </div>
                 </div> 
-                <table id="subjects" border="1" align="center">
-			            <tr>
-			                <th>Subject Name</th>   
-			                <th>Grade</th>            
-			            </tr> 
-			       <c:forEach items="${grades}" var="grade">
-			                <tr>
-			                    <td><c:out value="${grade.subjectName}" /></td>
-			                    <td><c:out value="${grade.grade}" /></td>
-			                </tr> 
-			    </c:forEach>
-			    </table><br>
-			    <center>
-			    <a href="/fyp/Spm/updateSPM.jsp" class="btn">Resubmit Result</a>
-			    </center>
-			    <br><br>
-			    <center>
-			    <a href="/fyp/test/testQuestion.jsp" class="btn btn-primary">Take Test</a>
-			    </center>
+
                 </div> 
                 </section>
                 <br><br>

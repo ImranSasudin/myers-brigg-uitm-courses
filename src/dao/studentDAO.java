@@ -214,64 +214,106 @@ public class studentDAO {
 
         return students;
     }
-//    
-//    public void deleteUser(String email) {
-//        try {
-//        	currentCon = connectionManager.getconnection();
-//        	ps=currentCon.prepareStatement("delete from users where email=?");
-//            ps.setString(1, email);
-//            ps.executeUpdate();
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    
+    public static void deleteSPM(String studentIc) {
+        try {
+        	currentCon = connectionManager.getConnection();
+        	ps=currentCon.prepareStatement("delete from spmresult where userid=?");
+            ps.setString(1, studentIc);
+           ps.executeUpdate();
+
+       } catch (SQLException e) {
+          e.printStackTrace();
+        }    
+      }
 
     //update account
-/*    public void updateUser(studentBean bean) throws NoSuchAlgorithmException {
+   public static void updateStudentPersonality(studentBean bean, Integer personality) throws NoSuchAlgorithmException {
     	System.out.println("dah masuk update app");
     	//student_id = bean.getstudent_id(); 
     	//student_add = bean.getstudent_add();  
-    	studentEmail = bean.getstudentEmail();    	
-    	studentPhone = bean.getstudentPhone(); 
+    	studentIc = bean.getstudentIc();    	
     //	password = bean.getPassword(); 
     	
-        String searchQuery = "UPDATE student SET student_add='" + student_add + "', studentEmail='" + studentEmail + "', studentPhone='" + studentPhone + "', password='" + password + "' WHERE student_id= '" + student_id + "'";
+        String searchQuery = "UPDATE student SET personalityid='" + personality + "' WHERE userid= '" + studentIc + "'";
     	
     	try {
 
-            currentCon = connectionManager.getconnection();
+            currentCon = connectionManager.getConnection();
             stmt = currentCon.createStatement();
             stmt.executeUpdate(searchQuery);
-            System.out.println("dah update app");
+            System.out.println("dah update personality");
             
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+   public static Integer getPersonalityID(String personality) {
+   	Integer personalityID = null;
+       try {
+       	currentCon = connectionManager.getConnection();
+           ps=currentCon.prepareStatement("select * from personality where personalitytype=?");
+           
+           ps.setString(1, personality);
+
+           ResultSet rs = ps.executeQuery();
+
+           if (rs.next()) {
+           
+               personalityID = rs.getInt("personalityid");
+ 
+           }
+       } catch (SQLException e) {
+           e.printStackTrace();
+       }
+
+       return personalityID;
+   }
+   public static String getPersonalityDesc(String personality) {
+	   	String personalitydesc = null;
+	       try {
+	       	currentCon = connectionManager.getConnection();
+	           ps=currentCon.prepareStatement("select * from personality where personalitytype=?");
+	           
+	           ps.setString(1, personality);
+
+	           ResultSet rs = ps.executeQuery();
+
+	           if (rs.next()) {
+	           
+	        	   personalitydesc = rs.getString("personalitydesc");
+	 
+	           }
+	       } catch (SQLException e) {
+	           e.printStackTrace();
+	       }
+
+	       return personalitydesc;
+	   }
     
-    public void updateUserByIC(studentBean bean) throws NoSuchAlgorithmException {
+    public static void updateUserByIC(studentBean bean) throws NoSuchAlgorithmException {
     	System.out.println("dah masuk update app");
     	studentIc = bean.getstudentIc(); 
     //	student_add = bean.getstudent_add();  
     	studentEmail = bean.getstudentEmail();    	
     	studentPhone = bean.getstudentPhone(); 
+    	studentName = bean.getstudentName();
     //	password = bean.getPassword(); 
     	
-        String searchQuery = "UPDATE student SET student_add='" + student_add + "', studentEmail='" + studentEmail + "', studentPhone='" + studentPhone + "', password='" + password + "' WHERE studentIc= '" + studentIc + "'";
+        String searchQuery = "UPDATE user SET useric='" + studentIc + "', username='" + studentName + "', userphone='" + studentPhone + "', useremail='" + studentEmail + "' WHERE useric= '" + studentIc + "'";
     	
     	try {
 
-            currentCon = connectionManager.getconnection();
+            currentCon = connectionManager.getConnection();
             stmt = currentCon.createStatement();
             stmt.executeUpdate(searchQuery);
-            System.out.println("dah update app");
+            System.out.println("dah update student");
             
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-*/
+
 //    //get all user
     public List<studentBean> getAllUser() {
         List<studentBean> users = new ArrayList<studentBean>();

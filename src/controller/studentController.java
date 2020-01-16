@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.gradeDAO;
 import dao.spmResultDAO;
@@ -61,11 +62,20 @@ public class studentController extends HttpServlet {
 					studentBean user = dao.getUserByIC(studentIc);
 	            	request.setAttribute("user", user);
 	        }
+		
 		else if (action.equalsIgnoreCase("viewApp")){
 					forward = VIEW;   
 					String studentIc = request.getParameter("studentIc");
 					studentBean user = dao.getUserByIC(studentIc);
 					request.setAttribute("user", user);           
+		}
+
+		else if (action.equalsIgnoreCase("home")){
+					forward = DETAILS;   
+					String studentIc = request.getParameter("studentIc");
+					studentBean student = dao.getUserByIC(studentIc);
+					request.setAttribute("user", student);
+					request.setAttribute("grades", spmResultDAO.getAllGrade(studentIc));  
 		}
 		
 		else if (action.equalsIgnoreCase("testPage")){
@@ -132,6 +142,8 @@ public class studentController extends HttpServlet {
 			        	
 							dao.addUser(user);
 							dao.addStudent(user);
+							HttpSession session = request.getSession(true);
+	        				session.setAttribute("currentSessionUser", user.getstudentIc());
 						} catch (NoSuchAlgorithmException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -147,23 +159,33 @@ public class studentController extends HttpServlet {
 					    view.forward(request, response);
 			        }
 					else {
+						try {
+							studentDAO.updateUserByIC(user);
+						} catch (NoSuchAlgorithmException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						user = studentDAO.getSPM(user);
-						if(!user.isValid()){
+						if(!user.isValid()){ //belum bgi result spm
 						
 							forward = SPMPAGE;   
 							String studentIc = request.getParameter("studentIc");
 							studentBean student = dao.getUserByIC(studentIc);
+							HttpSession session = request.getSession(true);
+	        				session.setAttribute("currentSessionUser", user.getstudentIc());
 							request.setAttribute("user", student);
 							request.setAttribute("subjects", dao1.getAllSubjectName());
 							
 							RequestDispatcher view = request.getRequestDispatcher(forward);
 						    view.forward(request, response);
 						}
-						else {
+						else { //dh bgi result spm
 							forward = DETAILS;
 								
 							String studentIc = request.getParameter("studentIc");
 							studentBean student = dao.getUserByIC(studentIc);
+							HttpSession session = request.getSession(true);
+	        				session.setAttribute("currentSessionUser", user.getstudentIc());
 							request.setAttribute("user", student);
 							request.setAttribute("grades", spmResultDAO.getAllGrade(studentIc));
 							RequestDispatcher view = request.getRequestDispatcher(forward);
@@ -173,20 +195,7 @@ public class studentController extends HttpServlet {
 					}
 					
 				} 
-				else if (action.equalsIgnoreCase("addSubject")) {
-					if(!user.isValid()) {
-						try {
-							dao1.addSubject(subject);
-						} catch (NoSuchAlgorithmException e) {
-							e.printStackTrace();
-						}
-						
-						forward = INDEXADMIN;
-						
-						RequestDispatcher view = request.getRequestDispatcher(forward);
-						view.forward(request, response);
-					}
-				}
+
 				else if (action.equalsIgnoreCase("spm")) {
 					String subjectId[] = request.getParameterValues("subjectId");
 					String grade[] = request.getParameterValues("grade");
@@ -194,6 +203,42 @@ public class studentController extends HttpServlet {
 					
 					studentBean student = new studentBean();
 					student.setstudentIc(studentIc);
+					for(int i = 0; i<subjectId.length; i++) {
+						subject.setsubjectId(subjectId[i]);
+						subject.setGrade(grade[i]);
+						try {
+							spmResultDAO.addGrade(subject, student);
+							
+						} catch (NoSuchAlgorithmException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					response.setContentType("text/html");
+				      PrintWriter pw = response.getWriter();
+				      pw.println("<script>");
+				      pw.println("alert('The order has been updated');");
+				      pw.println("</script>");
+				      
+				      forward = DETAILS;
+	
+						student = dao.getUserByIC(studentIc);
+						request.setAttribute("user", student);
+						request.setAttribute("grades", spmResultDAO.getAllGrade(studentIc));
+						RequestDispatcher view = request.getRequestDispatcher(forward);
+						view.forward(request, response);
+					
+					
+				}
+				else if (action.equalsIgnoreCase("update")) {
+					String subjectId[] = request.getParameterValues("subjectId");
+					String grade[] = request.getParameterValues("grade");
+					String studentIc = request.getParameter("studentIc");
+					
+					studentBean student = new studentBean();
+					student.setstudentIc(studentIc);
+					
+					studentDAO.deleteSPM(studentIc);
 					for(int i = 0; i<subjectId.length; i++) {
 						subject.setsubjectId(subjectId[i]);
 						subject.setGrade(grade[i]);

@@ -1,11 +1,20 @@
 package controller;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import dao.spmResultDAO;
+import dao.studentDAO;
+import model.studentBean;
 
 /**
  * Servlet implementation class personalityController
@@ -38,6 +47,11 @@ public class personalityController extends HttpServlet {
 		
 		Integer E = 0, I = 0, S = 0, N = 0, T = 0, F = 0, J = 0, P = 0;
 		String section1 = null, section2 = null, section3 = null, section4 = null;
+		HttpSession session = request.getSession(true);
+		String studentIc = (String) session.getAttribute("currentSessionUser");
+		
+		studentBean student = new studentBean();
+		student.setstudentIc(studentIc);
 		
 		if(action.equalsIgnoreCase("test")) {
 			String q1 = request.getParameter("q1");
@@ -214,6 +228,68 @@ public class personalityController extends HttpServlet {
 			String resultTest = section1.concat(section2).concat(section3).concat(section4);
 			
 			System.out.println("Result:" + resultTest);
+			
+			Integer personalityID = studentDAO.getPersonalityID(resultTest);
+			String personalityDesc = studentDAO.getPersonalityDesc(resultTest);
+			try {
+				studentDAO.updateStudentPersonality(student, personalityID);
+			} catch (NoSuchAlgorithmException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			String [] personalityType = {"INTP","ISTP","ENTP","ESTP","INTJ","ISTJ"
+					,"ENTJ","ESTJ","INFP","ISFP","ENFP","ESFP","INFJ","ISFJ","ENFJ","ESFJ"};
+			
+			String [] personality1 = {"INTP","ISTP","INTJ","ISTJ","INFP"};
+			
+			String [] personality2 = {"INTP","ISTJ","ENTJ","ISFJ","ESFJ"};
+			
+			String [] personality3 = {"ISFP"};
+			
+			student.setstudentIc(studentIc);
+			
+			spmResultDAO.getRequirement1(student);
+			if(student.isValid()) {
+				if(Arrays.asList(personality1).contains(resultTest)) {
+					request.setAttribute("faculty1", "Faculty of Computer Science");
+					request.setAttribute("course1", "CS110 - Diploma of Science Computer");
+				}
+				else {
+					request.setAttribute("faculty1", null);
+					request.setAttribute("course1", null);
+				}
+			}
+			spmResultDAO.getRequirement2(student);
+			if(student.isValid()) {
+				if(Arrays.asList(personality2).contains(resultTest)) {
+					request.setAttribute("faculty2", "Faculty of Accountancy");
+					request.setAttribute("course2", "AC110 - Diploma of Accountancy ");
+				}
+				else {
+					request.setAttribute("faculty2", null);
+					request.setAttribute("course2", null);
+				}
+			}
+			spmResultDAO.getRequirement3(student);
+			if(student.isValid()) {
+				if(Arrays.asList(personality3).contains(resultTest)) {
+					request.setAttribute("faculty3", "Faculty of Hotel and Tourism Management");
+					request.setAttribute("course3", "HM111 - Diploma in Tourism Management ");
+				}
+				else {
+					request.setAttribute("faculty3", null);
+					request.setAttribute("course3", null);
+				}
+			}
+			
+			request.setAttribute("personalityType", resultTest);
+			request.setAttribute("personalityDesc", personalityDesc);
+			RequestDispatcher view = request.getRequestDispatcher("/test/testResult.jsp");
+            view.forward(request, response);
+			
+			
+			
 		}
 	}
 

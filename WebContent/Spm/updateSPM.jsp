@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/fyp/permohonan2.css">
 
         <!-- Basic -->
-        <title>SPM Result | fyp</title>
+        <title>SPM Result | FYP</title>
 
         <!-- Define Charset -->
         <meta charset="utf-8">
@@ -27,7 +27,7 @@
         <!-- Page Description and Author -->
         <meta name="description" content="Sulfur - Responsive HTML5 Template">
         <meta name="author" content="Shahriyar Ahmed">
-		 <script  src="asset/jquery/jquery.js"></script>
+		 <script  src="asset/jquery/jquery.js"  align="center"> ></script>
         <script>
 		$(document).ready(function(){
 			$("#add").click(function(e) {
@@ -35,8 +35,8 @@
 							 '<c:forEach items="${subjects}" var="subjects">' +
 					'<option value="${subjects.subjectId}"><c:out value="${subjects.subjectName}" /></option>' +
 				'</c:forEach></select> '+
-				'<select name="grade"><option value="A+">A+</option><option value="A">A</option><option value="A-">A-</option>'+
-				'<option value="B+">B+</option><option value="B">B</option><option value="B-">B-</option></select>'+
+				'<select name="grade"><option value="1">A+</option><option value="2">A</option><option value="3">A-</option>'+
+				'<option value="4">B+</option><option value="5">B</option><option value="6">C+</option><option value="7">C</option><option value="8">D</option><option value="9">E</option><option value="10">G</option></select>'+
 				'<input type="button" value="Delete" id="delete"></div>');
 				});
 			$('body').on('click','#delete',function(e) { 
@@ -53,7 +53,8 @@
 
         <!-- Owl Carousel CSS -->
         <link rel="stylesheet" href="/fyp/asset/css/owl.carousel.css" type="text/css">
-        <link rel="stylesheet" href="/fyp/asset/css/owl.theme.css" type="text/css">
+        <link rel="stylesheet" href="/fyp/asset/cs
+        s/owl.theme.css" type="text/css">
         <link rel="stylesheet" href="/fyp/asset/css/owl.transitions.css" type="text/css">
         
         <!-- Css3 Transitions Styles  -->
@@ -73,7 +74,7 @@
        
         
 <meta charset="ISO-8859-1">
-<title>SPM PAGE</title>
+<title>SPM Result</title>
 </head>
 <body>
 <header class="clearfix">
@@ -91,75 +92,52 @@
                         </button>
                         
                         <!-- End Toggle Nav Link For Mobiles -->
-                        <a class="navbar-brand" href="/fyp/admin/indexAdmin.jsp">Course Recommendation based on Myers-Briggs </a>
+                        <a class="navbar-brand" href="/fyp/index.jsp">Course Recommendation based on Myers-Briggs </a>
                     </div>
-                    
-                    <div class="navbar-collapse collapse">
-                      
-                    </div>
-                    
                 </div>
             </div>
             <!-- End Header Logo & Navigation -->
             
  </header>
-  <section class="fun-facts">
-  <div class="form">
-         <h3>DETAILS </h3>
-            <div class="row"> 
-                <div class="col-xs-12 col-sm-12 col-md-12" data-wow-duration="2s" data-wow-delay="300ms">
-                    
-                          		<table border="0" width="50%" align="center">
-                          		
-                          			<tr>
-                          				<th><label>Ic Number: </label><br></th>
-                          				<th><input class="form-control" type="text" name="studentIc" id="studentIc" value="<c:out value="${user.studentIc}" />" readonly> <br></th>
-                          			</tr>
-                          			<tr>
-                          				<th><label>Name:</label><br></th>
-                          				<th><input class="form-control"type="text" name="studentName" id="studentName" value="<c:out value="${user.studentName}" />" readonly> <br></th>
-                          			</tr>
-                          			<tr>
-                          				<th><label>Email:</label><br></th>
-                          				<th><input class="form-control" type="email" name="studentEmail" id="studentEmail" value="<c:out value="${user.studentEmail}" />" readonly> <br></th>
-                          			</tr>
-                          			<tr>
-                          				<th><label>Phone Number:</label><br></th>
-                          				<th><input class="form-control" type="text" name="studentPhone" id="studentPhone" value="<c:out value="${user.studentPhone}" />" readonly> <br></th>
-                          			</tr>
-                          			<tr>
-		                     		<th colspan ="2">
-		           
-									</th>
-		                     		</tr>
-                          		</table>								
-							
-                  </div>
-                </div> 
-                <table id="subjects" border="1" align="center">
-			            <tr>
-			                <th>Subject Name</th>   
-			                <th>Grade</th>            
-			            </tr> 
-			       <c:forEach items="${grades}" var="grade">
-			                <tr>
-			                    <td><c:out value="${grade.subjectName}" /></td>
-			                    <td><c:out value="${grade.grade}" /></td>
-			                </tr> 
-			    </c:forEach>
-			    </table><br>
-			    <center>
-			    <a href="/fyp/Spm/updateSPM.jsp" class="btn">Resubmit Result</a>
-			    </center>
-			    <br><br>
-			    <center>
-			    <a href="/fyp/test/testQuestion.jsp" class="btn btn-primary">Take Test</a>
-			    </center>
-                </div> 
-                </section>
-                <br><br>
-                
+  <form action="studentController" method="post">
+ 
+<input type="hidden" name="studentIc" value="${user.studentIc}">               
 
+<br>
+<br>
+<br>
+
+<h2 align="center">SPM Result</h2>
+ <br><br>
+ 			
+			<div id="spm">
+			<div class="spm2">
+			
+			<select name="subjectId">
+			<c:forEach items="${subjects}" var="subjects">
+			 <option value="${subjects.subjectId}"><c:out value="${subjects.subjectName}" /></option>
+			</c:forEach>
+			</select>
+			
+				<select name="grade">
+				<option value="1">A+</option>
+				<option value="2">A</option>
+				<option value="3">A-</option>
+				<option value="4">B+</option>
+				<option value="5">B</option>
+				<option value="6">C+</option>
+				<option value="7">C</option>
+				<option value="8">D</option>
+				<option value="9">E</option>
+				<option value="10">G</option>
+			</select>
+			
+			</div>
+			</div>
+			<button type="button" id="add" role="button">Add Subject</button>
+			<br><br>
+        	 <button  type="submit" class="button button-block" name="action" value="update">Submit</button>
+          </form>
 </body>
 
 </html> 
