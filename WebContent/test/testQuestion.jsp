@@ -123,11 +123,11 @@
                           			</tr>
                           			<tr>
                           				<td rowspan="2" class="text-center">1</td>
-                          				<td>expand energy, enjoy groups</td>
+                          				<td>Expand energy, enjoy groups</td>
                           				<td class="text-center"><input type="radio" name="q1" value="a" required/></td>
                           			</tr>
                           			<tr>
-                          				<td>converse energy, enjoy one-on-one</td>
+                          				<td>Converse energy, enjoy one-on-one</td>
                           				<td class="text-center"><input type="radio" name="q1" value="b"/></td>
                           			</tr>
                           			<tr>
@@ -135,11 +135,11 @@
                           			</tr>
                           			<tr>
                           				<td rowspan="2" class="text-center">2</td>
-                          				<td>interpret matters literally, rely on common sense</td>
+                          				<td>Interpret matters literally, rely on common sense</td>
                           				<td class="text-center"><input type="radio" name="q2" value="a" required/></td>
                           			</tr>
                           			<tr>
-                          				<td>look for meaning and possibilities, rely on foresight</td>
+                          				<td>Look for meaning and possibilities, rely on foresight</td>
                           				<td class="text-center"><input type="radio" name="q2" value="b"/></td>
                           			</tr>
                           			<tr>
@@ -147,11 +147,11 @@
                           			</tr>
                           			<tr>
                           				<td rowspan="2" class="text-center">3</td>
-                          				<td>logical, thinking, questioning</td>
+                          				<td>Logical, thinking, questioning</td>
                           				<td class="text-center"><input type="radio" name="q3" value="a" required/></td>
                           			</tr>
                           			<tr>
-                          				<td>empathetic, feeling, accommodating</td>
+                          				<td>Empathetic, feeling, accommodating</td>
                           				<td class="text-center"><input type="radio" name="q3" value="b"/></td>
                           			</tr>
                           			<tr>
@@ -159,11 +159,11 @@
                           			</tr>
                           			<tr>
                           				<td rowspan="2" class="text-center">4</td>
-                          				<td>organized, orderly</td>
+                          				<td>Organized, orderly</td>
                           				<td class="text-center"><input type="radio" name="q4" value="a" required/></td>
                           			</tr>
                           			<tr>
-                          				<td>flexible, adaptable </td>
+                          				<td>Flexible, adaptable </td>
                           				<td class="text-center"><input type="radio" name="q4" value="b"/></td>
                           			</tr>
                           			<tr>
@@ -171,11 +171,11 @@
                           			</tr>
                           			<tr>
                           				<td rowspan="2" class="text-center">5</td>
-                          				<td>more outgoing, think out loud</td>
+                          				<td>More outgoing, think out loud</td>
                           				<td class="text-center"><input type="radio" name="q5" value="a" required/></td>
                           			</tr>
                           			<tr>
-                          				<td>more reserved, think to yourself </td>
+                          				<td>More reserved, think to yourself </td>
                           				<td class="text-center"><input type="radio" name="q5" value="b"/></td>
                           			</tr>
                           			<tr>
@@ -183,11 +183,11 @@
                           			</tr>
                           			<tr>
                           				<td rowspan="2" class="text-center">6</td>
-                          				<td>practical, realistic, experiential </td>
+                          				<td>Practical, realistic, experiential </td>
                           				<td class="text-center"><input type="radio" name="q6" value="a" required/></td>
                           			</tr>
                           			<tr>
-                          				<td>imaginative, innovative, theoretical</td>
+                          				<td>Imaginative, innovative, theoretical</td>
                           				<td class="text-center"><input type="radio" name="q6" value="b"/></td>
                           			</tr>
                           			<tr>
@@ -199,7 +199,7 @@
                           				<td class="text-center"><input type="radio" name="q7" value="a" required/></td>
                           			</tr>
                           			<tr>
-                          				<td>tactful, kind, encouraging</td>
+                          				<td>Tactful, kind, encouraging</td>
                           				<td class="text-center"><input type="radio" name="q7" value="b"/></td>
                           			</tr>
                           			<tr>
@@ -207,11 +207,11 @@
                           			</tr>
                           			<tr>
                           				<td rowspan="2" class="text-center">8</td>
-                          				<td>plan, schedule </td>
+                          				<td>Plan, schedule </td>
                           				<td class="text-center"><input type="radio" name="q8" value="a" required/></td>
                           			</tr>
                           			<tr>
-                          				<td>unplanned, spontaneous</td>
+                          				<td>Unplanned, spontaneous</td>
                           				<td class="text-center"><input type="radio" name="q8" value="b"/></td>
                           			</tr>
                           			<tr>
@@ -223,7 +223,7 @@
                           				<td class="text-center"><input type="radio" name="q9" value="a" required/></td>
                           			</tr>
                           			<tr>
-                          				<td>seek more private, solitary activities with quiet to concentrate </td>
+                          				<td>Seek more private, solitary activities with quiet to concentrate </td>
                           				<td class="text-center"><input type="radio" name="q9" value="b"/></td>
                           			</tr>
                           			<tr>
@@ -231,11 +231,11 @@
                           			</tr>
                           			<tr>
                           				<td rowspan="2" class="text-center">10</td>
-                          				<td>standard, usual, conventional</td>
+                          				<td>Standard, usual, conventional</td>
                           				<td class="text-center"><input type="radio" name="q10" value="a" required/></td>
                           			</tr>
                           			<tr>
-                          				<td>different, novel, unique</td>
+                          				<td>Different, novel, unique</td>
                           				<td class="text-center"><input type="radio" name="q10" value="b"/></td>
                           			</tr>
                           			<tr>
@@ -243,11 +243,11 @@
                           			</tr>
                           			<tr>
                           				<td rowspan="2" class="text-center">11</td>
-                          				<td>firm, tend to criticize, hold the line</td>
+                          				<td>Firm, tend to criticize, hold the line</td>
                           				<td class="text-center"><input type="radio" name="q11" value="a" required/></td>
                           			</tr>
                           			<tr>
-                          				<td>gentle, tend to appreciate, conciliate </td>
+                          				<td>Gentle, tend to appreciate, conciliate </td>
                           				<td class="text-center"><input type="radio" name="q11" value="b"/></td>
                           			</tr>
                           			<tr>
@@ -255,11 +255,11 @@
                           			</tr>
                           			<tr>
                           				<td rowspan="2" class="text-center">12</td>
-                          				<td>regulated, structured </td>
+                          				<td>Regulated, structured </td>
                           				<td class="text-center"><input type="radio" name="q12" value="a" required/></td>
                           			</tr>
                           			<tr>
-                          				<td>easy-going, "live" and "let live" </td>
+                          				<td>Easy-going, "live" and "let live" </td>
                           				<td class="text-center"><input type="radio" name="q12" value="b"/></td>
                           			</tr>
                           			<tr>
@@ -267,11 +267,11 @@
                           			</tr>
                           			<tr>
                           				<td rowspan="2" class="text-center">13</td>
-                          				<td>external, communicative, express yourself</td>
+                          				<td>External, communicative, express yourself</td>
                           				<td class="text-center"><input type="radio" name="q13" value="a" required/></td>
                           			</tr>
                           			<tr>
-                          				<td>internal, reticent, keep to yourself</td>
+                          				<td>Internal, reticent, keep to yourself</td>
                           				<td class="text-center"><input type="radio" name="q13" value="b"/></td>
                           			</tr>
                           			<tr>
@@ -279,11 +279,11 @@
                           			</tr>
                           			<tr>
                           				<td rowspan="2" class="text-center">14</td>
-                          				<td>consider immediate issues, focus on the here-and-now</td>
+                          				<td>Consider immediate issues, focus on the here-and-now</td>
                           				<td class="text-center"><input type="radio" name="q14" value="a" required/></td>
                           			</tr>
                           			<tr>
-                          				<td>look at the future, global perspective, ""big picture"</td>
+                          				<td>Look at the future, global perspective, ""big picture"</td>
                           				<td class="text-center"><input type="radio" name="q14" value="b"/></td>
                           			</tr>
                           			<tr>
@@ -291,11 +291,11 @@
                           			</tr>
                           			<tr>
                           				<td rowspan="2" class="text-center">15</td>
-                          				<td>tough-minded, just</td>
+                          				<td>Tough-minded, just</td>
                           				<td class="text-center"><input type="radio" name="q15" value="a" required/></td>
                           			</tr>
                           			<tr>
-                          				<td>tender-minded, merciful</td>
+                          				<td>Tender-minded, merciful</td>
                           				<td class="text-center"><input type="radio" name="q15" value="b"/></td>
                           			</tr>
                           			<tr>
@@ -303,11 +303,11 @@
                           			</tr>
                           			<tr>
                           				<td rowspan="2" class="text-center">16</td>
-                          				<td>preparation, plan ahead </td>
+                          				<td>Preparation, plan ahead </td>
                           				<td class="text-center"><input type="radio" name="q16" value="a" required/></td>
                           			</tr>
                           			<tr>
-                          				<td>go with the flow, adapt as you go </td>
+                          				<td>Go with the flow, adapt as you go </td>
                           				<td class="text-center"><input type="radio" name="q16" value="b"/></td>
                           			</tr>
                           			<tr>
@@ -319,7 +319,7 @@
                           				<td class="text-center"><input type="radio" name="q17" value="a" required/></td>
                           			</tr>
                           			<tr>
-                          				<td>reflective, deliberate </td>
+                          				<td>Reflective, deliberate </td>
                           				<td class="text-center"><input type="radio" name="q17" value="b"/></td>
                           			</tr>
                           			<tr>
@@ -331,7 +331,7 @@
                           				<td class="text-center"><input type="radio" name="q18" value="a" required/></td>
                           			</tr>
                           			<tr>
-                          				<td>ideas, dreams, seeing "what could be" philosophical</td>
+                          				<td>Ideas, dreams, seeing "what could be" philosophical</td>
                           				<td class="text-center"><input type="radio" name="q18" value="b"/></td>
                           			</tr>
                           			<tr>
@@ -339,11 +339,11 @@
                           			</tr>
                           			<tr>
                           				<td rowspan="2" class="text-center">19</td>
-                          				<td>matter of fact, issues-oriented, principled </td>
+                          				<td>Matter of fact, issues-oriented, principled </td>
                           				<td class="text-center"><input type="radio" name="q19" value="a" required/></td>
                           			</tr>
                           			<tr>
-                          				<td>sensitive, people-oriented, compassionate </td>
+                          				<td>Sensitive, people-oriented, compassionate </td>
                           				<td class="text-center"><input type="radio" name="q19" value="b"/></td>
                           			</tr>
                           			<tr>
@@ -351,11 +351,11 @@
                           			</tr>
                           			<tr>
                           				<td rowspan="2" class="text-center">20</td>
-                          				<td>control, govern </td>
+                          				<td>Control, govern </td>
                           				<td class="text-center"><input type="radio" name="q20" value="a" required/></td>
                           			</tr>
                           			<tr>
-                          				<td>latitude , freedom </td>
+                          				<td>Latitude , freedom </td>
                           				<td class="text-center"><input type="radio" name="q20" value="b"/></td>
                           			</tr>
                           			<tr>

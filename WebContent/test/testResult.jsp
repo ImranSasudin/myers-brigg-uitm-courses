@@ -123,29 +123,30 @@
                           				<th>Faculty</th>
                           				<th>Course</th>
                           			</tr>
-                          			<c:choose>
-                          				<c:when test="${faculty1 != null}">
+                          			
+                          				<% if(request.getAttribute("faculty1") != null)  { %>
                           					<tr>
 		                          				<td>${faculty1}</td>
 		                          				<td>${course1}</td>
 		                          			</tr>
-                          				</c:when>
-                          				<c:when test="${faculty2 != null}">
+		                          		<% } %>
+                          				<% if(request.getAttribute("faculty2") != null)  { %>
                           					<tr>
 		                          				<td>${faculty2}</td>
 		                          				<td>${course2}</td>
 		                          			</tr>
-                          				</c:when>
-                          				<c:when test="${faculty3 != null}">
+		                          		<% } %>
+		                          		<% if(request.getAttribute("faculty3") != null)  { %>
                           					<tr>
 		                          				<td>${faculty3}</td>
 		                          				<td>${course3}</td>
 		                          			</tr>
-                          				</c:when>
-                          			</c:choose>
-                          			
-                          			
-
+		                          		<% } %>
+		                          		<% if(request.getAttribute("faculty1") == null && request.getAttribute("faculty2") == null && request.getAttribute("faculty3") == null)  { %>
+                          					<tr>
+                          						<td class="text-center" colspan="2">No Matched/Suitable Courses</td>
+                          					</tr>
+		                          		<% } %>
 
                           		</table>		
                           		<%String studentIc = (String) session.getAttribute("currentSessionUser"); %>

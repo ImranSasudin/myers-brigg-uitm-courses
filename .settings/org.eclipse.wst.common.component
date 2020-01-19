@@ -2,6 +2,12 @@
     <wb-module deploy-name="fyp">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <dependent-module archiveName="ojdbc6.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/ojdbc6/ojdbc6">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="jstl-1.2.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/jstl-1.2/jstl-1.2">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="fyp"/>
         <property name="java-output-path" value="/fyp/build/classes"/>
     </wb-module>

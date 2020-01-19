@@ -16,7 +16,7 @@
 <head>
 
         <!-- Basic -->
-        <title>ADD SUBJECT | FYP</title>
+        <title>COURSE LIST | CRMB </title>
 
         <!-- Define Charset -->
         <meta charset="utf-8">
@@ -124,7 +124,7 @@
         <div class="form">
             <!--<div class="row">-->
         <div class="form">
-          <h3>List Students</h3>
+          <h3>Course List</h3>
           <br/>
         <form>
 		<table class="table" id="subjects" border="1">

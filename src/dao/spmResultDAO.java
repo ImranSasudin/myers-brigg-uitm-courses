@@ -97,10 +97,10 @@ public class spmResultDAO {
 
         String searchQuery = "select (select count(s.userid) from student s join spmresult sr on (s.userid = sr.userid) join grade g on (g.gradeid = sr.gradeid)" + 
         		"join spmsubject ss on (ss.subjectid = sr.subjectid) where s.userid = '" + studentIc +"' " + 
-        		"AND (g.grademark >= 4 " + 
-        		"AND (sr.subjectid = '1' OR sr.subjectid= '2' OR sr.subjectid = '3'))" + 
-        		"OR (g.grademark >= 1" + 
-        		"AND (sr.subjectid = '5'))) as count1,(select count(s.userid) from student s join spmresult sr on (s.userid = sr.userid) join grade g on (g.gradeid = sr.gradeid)" + 
+        		"AND ((g.grademark >= 4 AND sr.subjectid = '1')" + 
+        		"OR (g.grademark >= 4 AND sr.subjectid = '2')" + 
+        		"OR (g.grademark >= 4 AND sr.subjectid = '3')" + 
+        		"OR (g.grademark >= 1 AND (sr.subjectid = '5')))) as count1,(select count(s.userid) from student s join spmresult sr on (s.userid = sr.userid) join grade g on (g.gradeid = sr.gradeid)" + 
         		"join spmsubject ss on (ss.subjectid = sr.subjectid) where s.userid = '" + studentIc +"' " + 
         		"AND (g.grademark >= 4 " + 
         		"AND (sr.subjectid = '4' OR sr.subjectid= '10' OR sr.subjectid = '9' OR sr.subjectid ='21'))) as count2 from dual";
@@ -172,12 +172,9 @@ public static studentBean getRequirement2(studentBean bean)  {
 
         String searchQuery = "select (select count(s.userid) from student s join spmresult sr on (s.userid = sr.userid) join grade g on (g.gradeid = sr.gradeid)" + 
         		"join spmsubject ss on (ss.subjectid = sr.subjectid) where s.userid = '" + studentIc +"' " + 
-        		"AND (g.grademark >= 5 " + 
-        		"AND (sr.subjectid = '5'))" + 
-        		"OR (g.grademark >= 1" + 
-        		"AND (sr.subjectid = '6'))" + 
-        		"OR (g.grademark >= 4" + 
-        		"AND (sr.subjectid = '1'))) as count1,(select count(s.userid) from student s join spmresult sr on (s.userid = sr.userid) join grade g on (g.gradeid = sr.gradeid)" + 
+        		"AND ((g.grademark >= 5 AND (sr.subjectid = '5'))" + 
+        		"OR (g.grademark >= 1 AND (sr.subjectid = '6'))" + 
+        		"OR (g.grademark >= 4 AND (sr.subjectid = '1')))) as count1,(select count(s.userid) from student s join spmresult sr on (s.userid = sr.userid) join grade g on (g.gradeid = sr.gradeid)" + 
         		"join spmsubject ss on (ss.subjectid = sr.subjectid) where s.userid = '" + studentIc +"' " + 
         		"AND (g.grademark >= 4 " + 
         		"AND (sr.subjectid = '2' OR sr.subjectid= '3'))) as count2, (select count(s.userid) from student s join spmresult sr on (s.userid = sr.userid) join grade g on (g.gradeid = sr.gradeid)" + 

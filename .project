@@ -3,6 +3,8 @@
 	<name>fyp</name>
 	<comment></comment>
 	<projects>
+		<project>ojdbc6</project>
+		<project>jstl-1.2</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
